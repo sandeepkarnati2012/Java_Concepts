@@ -1,6 +1,6 @@
 import java.io.File;
-import java.util.Scanner;
 import java.io.IOException;
+import java.util.Scanner;
 
 public class DirectoryExplorer {
 
@@ -21,7 +21,7 @@ public class DirectoryExplorer {
             String newfileName = scanner.nextLine();
             // Attempt to rename the file
             boolean changed = file.renameTo(new File(file.getParent(), newfileName));
-            //Print message about success or failure of file renaming
+            //Print message about success or failur of file renaming
             if (changed) {
                 System.out.println("Filename successfully changed");
             } else {
@@ -30,11 +30,27 @@ public class DirectoryExplorer {
         } else if (userChoice.equals("2")) {
             // Delete the file
             boolean deleted = file.delete();
-            //Print message about success or failure of file deletion
+            //Print message about success or failur of file deletion
             if (deleted) {
                 System.out.println("Filename successfully deleted");
             } else {
                 System.out.println("Filename couldn't be deleted!");
+            }
+        }
+    }
+
+    private static void directoryList(File dirObj) {
+        // Get a list of files and subdirectories in the directory
+        File files[] = dirObj.listFiles();
+        // Iterate over the list of files and subdirectories
+        for (int i = 0; i < files.length; i++) {
+            // Check if the current item is a file
+            if (files[i].isFile()) {
+                // Print the absolute path of the file
+                System.out.println(files[i].getAbsolutePath());
+            } else {
+                // If the current item is a subdirectory, recursively list its contents
+                directoryList(files[i]);
             }
         }
     }
@@ -45,6 +61,7 @@ public class DirectoryExplorer {
         System.out.println("\nPress 1 to list the directory," +
                 "\nPress 2 to rename the directory," +
                 "\nPress 3 to delete the directory," +
+                "\nPress 4 to recursively list the directory," +
                 "\nAny other key to exit");
 
         Scanner scanner = new Scanner(System.in);
@@ -82,6 +99,9 @@ public class DirectoryExplorer {
             } else {
                 System.out.println("Directory couldn't be deleted! It might not be empty");
             }
+        } else if (userChoice.equals("4")) {
+                // Recursively list the contents of the directory
+                directoryList(dirObj);
         }
     }
 
