@@ -4,7 +4,7 @@ import java.util.Scanner;
 
 public class ZonedDateTimePrinter {
 
-    public static void main(String s[]) {
+    public static void main(String[] s) {
         Scanner scanner = new Scanner(System.in);
         ZonedDateTime nowDateTime = ZonedDateTime.now();
         System.out.println("\nDefault Format " + nowDateTime);
