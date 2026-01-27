@@ -1,0 +1,3 @@
+Pet owners often forget important tasks such as vet visits, vaccinations, and grooming appointments. Paws & Whiskers wants to provide a simple console-based app to help them organize all their pet care needs in one place.
+
+ goal is to build a console-based, pet care scheduler application that lets users register their pets, log important appointments, track upcoming tasks, and keep a history of past visits, all while safely storing this information so it doesn't disappear when the app closes.
